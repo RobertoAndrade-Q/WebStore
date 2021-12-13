@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título dinámico -->
+    <title>Web Store - {% block title%} {% endblock %}</title> 
+    <!-- Referencias al CSS personalizado y el boostrap -->
+    <link rel="stylesheet" href="https://bootswatch.com/5/minty/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+
+</head>
+<body>
+    <header class="navbar navbar-dark sticky-top bg-blue-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{url_for('base.home')}}"> WebStore</a>
+    
+    </header>
+    
+    <!-- Menú de navegación -->
+    <div class="container-fluid">
+        <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{url_for('base.home')}}">
+                                <span data-feather="home"></span>
+                                Escritorio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('sale.index')}}">
+                                <span data-feather="file"></span>
+                                Ventas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('product.index')}}">
+                                <span data-feather="shopping-cart"></span>
+                                Productos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{url_for('customer.index')}}">
+                                <span data-feather="users"></span>
+                                Clientes
+                            </a>
+                        </li>
+    
+                </div>
+            </nav>
+    
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                
+                <!-- Aquí se coloca el contenido de las demás plantillas -->
+                {% block content %}
+
+                {% endblock %}
+
+                
+            </main>
+            
+        </div>
+    </div>
+    
+    <!-- Scripts requeridos para la ejecución del proyecto -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>

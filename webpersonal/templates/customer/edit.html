@@ -1,0 +1,19 @@
+{% extends './base.html' %}
+
+{% block title %} Nuevo proyecto {%endblock%}
+
+{% block content %}
+<h2>Crear nuevo proyecto</h2>
+
+<form action="{{ url_for('customer.update', id=customer.id)}}" method="POST">
+    <label for="name">Titulo</label><br>
+    <input type="text" id="name" name="name" value="{{customer.name}}"><br>
+    <label for="phone">Telefono</label><br>
+    <input type="phone" id="phone" name="phone" value="{{customer.phone}}"><br>
+    <label for="city">Ciudad</label><br>
+    <input type="text" id="city" name="city" value="{{customer.city}}"><br>
+
+    <input class="btn btn-success mb-4" type="submit" value="Guardar">
+</form>
+
+{% endblock %}

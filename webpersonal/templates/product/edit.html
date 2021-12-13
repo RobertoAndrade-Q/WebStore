@@ -1,0 +1,25 @@
+{% extends './base.html' %}
+
+{% block title %} Nuevo proyecto {%endblock%}
+
+{% block content %}
+<form action="{{ url_for('product.update', id=product.id)}}" method="POST">
+    <label for="title">Titulo</label><br>
+    <input type="text" id="title" name="title" value="{{product.title}}"><br>
+    <label for="description">Descripción</label><br>
+    <textarea name="description" id="description" cols="50" rows="10">{{product.description}}</textarea><br>
+    <label for="price">Precio</label><br>
+    <input type="text" id="price" name="price" value="{{product.price}}"><br>
+    <br>
+    <label for="stock">Stock</label><br>
+    <input type="number" id="stock" name="stock" value="{{product.stock}}"><br>
+    <br>
+    
+    <input type="submit" value="Guardar">
+</form>
+
+<a href="{{url_for('product.index')}}">
+    <img src="https://img.icons8.com/ios-filled/50/000000/circled-left.png"/>
+</a>
+
+{% endblock %}

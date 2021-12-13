@@ -1,0 +1,36 @@
+{% extends './base.html'%}
+
+{% block title %} Clientes {% endblock %}
+
+{% block content %}
+
+<h1 class="title mt-4">Lista de Clientes</h1>
+
+
+<br>
+<div class="btn-new">
+    <a href="{{url_for('customer.create')}}">Agregar cliente</a>
+</div>
+
+    <table class="table table-hover container">
+        <tr class="table-info">
+            <th>Titulo</th>
+            <th>Descripción</th>
+            <th>Ciudad</th>
+            <th></th>
+        </tr>
+        {% for customer in customers %}
+        <tr class="table-dark">
+            <td>{{customer.name}}</td>
+            <td>{{customer.phone}}</td>
+            <td>{{customer.city}}</td>
+            <td>
+                <a class="btn btn-info" href="{{url_for('customer.edit', id=customer['id'])}}">Editar</a>
+                <a class="btn btn-danger" href="{{url_for('customer.delete',id=customer['id'])}}">Eliminar</a>
+            </td>
+        </tr>
+
+        {%endfor%}
+    </table>
+
+{% endblock %}

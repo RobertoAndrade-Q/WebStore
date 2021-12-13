@@ -1,0 +1,50 @@
+{% extends './base.html' %}
+
+{% block title %} Nuevo proyecto {%endblock%}
+
+{% block content %}
+<br>
+<h2>Modifica datos</h2>
+<br>
+<form action="{{ url_for('sale.update', id=sale.id)}}" method="POST">
+    <label for="date">Fecha de Venta</label><br>
+    <input type="date" id="date" name="date" value="{{sale.date}}"><br>
+
+    <label for="metodo_pago">Método de pago</label><br>
+    <select name="metodo_pago" id="metodo_pago">
+        <option selected disabled value="{{sale.metodo_pago}}">{{sale.metodo_pago}}</option>
+        <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+        <option value="Efectivo">Efectivo</option>
+    </select>
+    <br>
+
+    <label for="product_id">Id Producto</label><br>
+    <select name="product_id" id="product_id">
+        <option selected disabled class="opcion-desactivada">{{sale.producto.title}}</option>
+        {% for producto in productos %}
+            <option value="{{producto.id}}">{{producto.title}}</option>
+
+        {%endfor%}
+    </select>
+    <br>
+    <label for="customer_id">Id cliente</label><br>
+    <select name="customer_id" id="customer_id">
+        <option disabled select value="{{clientes.id}}">{{sale.cliente.name}}</option>
+        {% for cliente in clientes %}
+            <option value="{{cliente.id}}">{{cliente.name}}</option>
+
+        {%endfor%}
+    </select>
+<br>
+    <label for="total">Total Pagado</label><br>
+    <input type="number" id="total" name="total" value="{{sale.total}}"><br>
+    <br>
+    
+    <input type="submit" value="Guardar" class="btn btn-info">
+</form>
+
+<a href="{{url_for('sale.index')}}">
+    <img src="https://img.icons8.com/ios-filled/50/000000/circled-left.png"/>
+</a>
+
+{% endblock %}

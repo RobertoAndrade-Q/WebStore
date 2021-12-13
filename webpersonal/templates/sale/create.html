@@ -1,0 +1,47 @@
+{% extends './base.html' %}
+
+{% block title %} Agregar Venta {%endblock%}
+
+{% block content %}
+<h2 class="mt-4">Agregar nueva Venta</h2>
+<br>
+<form action="{{ url_for('sale.insert')}}" method="POST" >
+    <label for="date">Fecha de Venta</label><br>
+    <input type="date" id="date" name="date"><br>
+
+    <label for="metodo_pago">Método de pago</label><br>
+    <select name="metodo_pago" id="metodo_pago">
+        <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
+        <option value="Efectivo">Efectivo</option>
+    </select>
+    <br>
+    <label for="product_id">Producto</label><br>
+    <select name="product_id" id="product_id">
+        {% for producto in productos %}
+            <option value="{{producto.id}}">{{producto.title}}</option>
+
+        {%endfor%}
+    </select>
+    <br>
+    <label for="customer_id">Cliente</label><br>
+    <select name="customer_id" id="customer_id">
+        {% for cliente in clientes %}
+            <option value="{{cliente.id}}">{{cliente.name}}</option>
+
+        {%endfor%}
+    </select>
+    <br>
+    <label for="total">Total Pagado</label><br>
+    <input type="text" id="total" name="total"><br>
+
+
+    <br>
+    <input type="submit" value="Guardar" class="btn btn-success">
+</form>
+
+<a href="{{url_for('sale.index')}}">
+    <img src="https://img.icons8.com/ios-filled/50/000000/circled-left.png"/>
+</a>
+
+
+{% endblock %}
